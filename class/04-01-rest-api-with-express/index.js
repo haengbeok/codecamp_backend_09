@@ -7,6 +7,10 @@ app.get("/", function (req, res) {
   res.send("hello world");
 });
 
+// app.post("/qqq", function (req, res){
+//
+// })
+
 app.listen(3000, () => {
   console.log("서버프로그램을 켜는데 성공했습니다");
 });
