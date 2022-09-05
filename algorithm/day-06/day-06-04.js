@@ -16,7 +16,7 @@ function solution(arr) {
 
 function solution(arr) {
   const sum = arr.reduce((arr, cur) => {
-    return arr + cur;
+    return acc + cur;
   });
   return sum / arr.length;
 }
