@@ -13,11 +13,11 @@ function getToken() {
     console.log("숫자를 제대로 입력해 주세요");
     return;
   }
-  if (qqq < 2) {
+  if (qqq <= 0) {
     console.log("갯수가 너무 적습니다");
     return;
   }
-  if (qqq >= 10) {
+  if (qqq > 10) {
     console.log("갯수가 너무 많습니다");
     return;
   }

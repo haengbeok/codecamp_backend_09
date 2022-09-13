@@ -21,7 +21,7 @@ async function createMessage() {
 
   // 3. 스크래핑 결과에서 OG(오픈 그래프) 코드 골라내서 변수에 저장하기
   const $ = cheerio.load(result.data);
-  $("meta").each((i, el) => {
+  $("meta").each((_, el) => {
     if ($(el).attr("property")?.includes("og:")) {
       // ? : 옵셔널 체이닝
       const key = $(el).attr("property"); // og:title, og:description, ...
