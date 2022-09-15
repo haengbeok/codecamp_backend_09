@@ -8,9 +8,9 @@
 //     }
 // }
 
-const aaa = new Date();
-console.log(aaa.getFullYear());
-console.log(aaa.getMonth() + 1);
+// const aaa = new Date();
+// console.log(aaa.getFullYear());
+// console.log(aaa.getMonth() + 1);
 
 class Monster {
   power = 10;
@@ -27,7 +27,7 @@ class Monster {
 
 class 공중몬스터 extends Monster {
   constructor() {
-    super(qqq);
+    super(20);
   }
 
   run = () => {
@@ -37,7 +37,7 @@ class 공중몬스터 extends Monster {
 
 class 지상몬스터 extends Monster {
   constructor() {
-    super(www);
+    super(50);
   }
 
   run = () => {
@@ -45,10 +45,10 @@ class 지상몬스터 extends Monster {
   };
 }
 
-const mymonster1 = new 공중몬스터(20);
+const mymonster1 = new 공중몬스터();
 mymonster1.attack();
 mymonster1.run();
 
-const mymonster2 = new 지상몬스터(50);
+const mymonster2 = new 지상몬스터();
 mymonster2.attack();
 mymonster2.run();
