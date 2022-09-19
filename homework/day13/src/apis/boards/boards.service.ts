@@ -63,16 +63,7 @@ export class BoardService {
 
   create({ createStarbucksInput }) {
     // 1. 브라우저에서 보내준 데이터 확인하기
-    console.log(`
-    name: '${createStarbucksInput.name}',
-    price: ${createStarbucksInput.price},
-    kcal: ${createStarbucksInput.kcal},
-    saturated_fat: ${createStarbucksInput.saturated_fat},
-    protein: ${createStarbucksInput.protein},
-    natrium: ${createStarbucksInput.natrium},
-    sugar: ${createStarbucksInput.sugar},
-    caffeine: ${createStarbucksInput.caffeine}
-    `);
+    console.log({ createStarbucksInput });
 
     // 2. 데이터를 등록하는 로직 => DB에 접속해서 데이터 저장하기
     //
