@@ -21,10 +21,7 @@ function getToken() {
     console.log("에러 발생!! 갯수가 너무 많습니다!!");
     return;
   }
-  const result = String(Math.floor(Math.random() * 10 ** qqq)).padStart(
-    qqq,
-    "0"
-  );
+  const result = String(Math.floor(Math.random() * 10 ** qqq)).padStart(qqq, "0");
   return result;
   // console.log(result)
 }
