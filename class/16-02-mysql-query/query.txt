@@ -1,0 +1,80 @@
+show databases
+;
+
+use myproject09
+;
+
+show tables
+;
+
+desc product
+;
+
+select * from product
+;
+
+insert into product(id, name, description, price, isSoldout)
+	 values (uuid(), "마우스", "좋은 마우스", 15000, false)
+;
+
+insert into product(id, name, description, price, isSoldout)
+	 values (uuid(), "노트북", "최신 맥북", 20000, false)
+;
+
+insert into product(id, name, description, price, isSoldout)
+	 values (uuid(), "옷", "깔끔한 셔츠", 30000, false)
+;
+
+delete from product where name = "옷"
+;
+
+select * from product_sales_location
+;
+
+insert into product_sales_location(id, address, addressDetail, lat, lng, meetingTime)
+	 values (uuid(), "구로구", "구로디지털단지", 37.281723, 127.192387, "2022-12-31")
+;
+
+update product set price = 18000 where name = '마우스'
+;
+
+update product set productSalesLocationID = "b2796828-3984-11ed-9f5d-c50def89e0c8"
+where name = '마우스'
+;
+
+select * from product
+;
+
+select p.id, name, price, address as "주소", addressDetail as "상세주소"
+from product p, product_sales_location psl
+where p.productSalesLocationId = psl.id
+;
+
+# 추가 기능들 - 1
+update product set isSoldout = true
+where name = "노트북"
+and price = 20000
+;
+
+# 추가 기능들 - 2
+update product set price = 5000
+where name = "노트북"
+or name = "키보드"
+;
+
+# 추가 기능들 - 3 (update와 delete 에서는 가급적 사용x, 조회나 필터링 할 때 사용)
+select * from product
+where 1 = 1 
+and price = 5000
+and location = "구로"
+and isSoldout = false
+
+
+select name, price
+from product
+order by price desc
+;
+
+select name, price, isSoldout, (select max(price) from product) as maxPrice
+from product
+;
