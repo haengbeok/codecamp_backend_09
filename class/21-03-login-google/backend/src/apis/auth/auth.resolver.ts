@@ -12,6 +12,7 @@ export class AuthResolver {
     private readonly authservice: AuthService, //
     private readonly usersService: UsersService,
   ) {}
+
   @Mutation(() => String)
   async login(
     @Args('email') email: string, //
@@ -32,7 +33,7 @@ export class AuthResolver {
     // 4. refreshToken(=JWT)을 만들어서 프론트엔드 브라우저 쿠키에 저장해서 보내주기
     this.authservice.setRefreshToken({ user, res: context.res });
 
-    // 4. 일치하는 유저가 있고, 비밀번호도 맞았다면?
+    // 5. 일치하는 유저가 있고, 비밀번호도 맞았다면?
     //      => accessToken(=JWT)을 만들어서 브라우저에 전달하기
     return this.authservice.getAccessToken({ user });
   }

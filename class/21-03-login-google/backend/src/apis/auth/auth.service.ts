@@ -12,7 +12,6 @@ export class AuthService {
       { email: user.email, sub: user.id }, //
       { secret: 'myRefreshKey', expiresIn: '2w' },
     );
-
     // 개발환경
     res.setHeader('Set-Cookie', `refreshToken=${refreshToken}; path=/;`);
 

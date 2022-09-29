@@ -31,6 +31,18 @@ export class AuthController {
     // 2. 가입이 안돼있다면? 자동회원가입
     if (!user) user = await this.usersService.create({ ...req.user });
 
+    // async create({ email, hashedPassword: password, name, age }) {
+    //   const user = await this.userRepository.findOne({ where: { email } });
+    //   if (user) throw new ConflictException('이미 등록된 이메일입니다.');
+    //   //   throw new HttpException('이미 등록된 이메일입니다.', HttpStatus.CONFLICT); // 이렇게도 가능
+    //   return this.userRepository.save({
+    //     email,
+    //     password,
+    //     name,
+    //     age,
+    //   });
+    // }
+
     // 3. 가입이 돼있다면? 로그인 (refreshToken, accessToken 만들어서 프론트엔드에 주기)
     this.authService.setRefreshToken({ user, res });
     res.redirect(
