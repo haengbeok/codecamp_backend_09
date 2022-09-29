@@ -1,0 +1,96 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  id: String!
+  name: String!
+  phone: String!
+  email: String!
+  personal: String!
+  grade: String!
+}
+
+type Movie {
+  id: String!
+  title: String!
+  summary: String!
+  open: String!
+  isIng: Boolean!
+  movieGenres: [MovieGenre!]!
+}
+
+type MovieGenre {
+  id: String!
+  name: String!
+  movie: [Movie!]!
+}
+
+type MovieImage {
+  id: String!
+  url: String!
+  isMain: Boolean!
+  movie: Movie!
+}
+
+type Query {
+  fetchLoginUser(userEmail: String!): User!
+  fetchUsers: [User!]!
+  fetchUser(userEmail: String!): User!
+  fetchMovies: [Movie!]!
+  fetchMovie(movieId: String!): Movie!
+  fetchMovieImages: [MovieImage!]!
+  fetchMovieImageWithDeleted: [MovieImage!]!
+  fetchMovieImage(movieImageId: String!): MovieImage!
+}
+
+type Mutation {
+  login(userEmail: String!, password: String!): String!
+  restoreAccessToken: String!
+  createUser(createUserInput: CreateUserInput): User!
+  deleteLoginUser(userEmail: String!): Boolean!
+  updateUserPwd(userEmail: String!, updateUserInput: UpdateUserInput!): User!
+  updateUser(userEmail: String!, updateUserInput: UpdateUserInput!): User!
+  deleteUser(userEmail: String!): Boolean!
+  createMovie(createMovieInput: CreateMovieInput): Movie!
+  UpdateMovie(movieId: String!, updateMovieInput: UpdateMovieInput!): Movie!
+  createMovieImage(createMovieImageInput: CreateMovieImageInput!): MovieImage!
+  deleteMovieImage(movieImageId: String!): Boolean!
+  restoreMovieImage(movieImageId: String!): Boolean!
+}
+
+input CreateUserInput {
+  name: String!
+  phone: String!
+  email: String!
+  password: String!
+  personal: String!
+}
+
+input UpdateUserInput {
+  name: String
+  phone: String
+  email: String
+  password: String
+  personal: String
+}
+
+input CreateMovieInput {
+  title: String!
+  summary: String!
+  open: String!
+  movieGenres: [String!]!
+}
+
+input UpdateMovieInput {
+  title: String
+  summary: String
+  open: String
+  movieGenres: [String!]
+}
+
+input CreateMovieImageInput {
+  url: String!
+  isMain: Boolean!
+  movieId: String!
+}
