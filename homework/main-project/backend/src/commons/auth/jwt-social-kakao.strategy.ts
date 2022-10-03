@@ -5,8 +5,8 @@ export class JwtKakaoStrategy extends PassportStrategy(Strategy, 'kakao') {
   constructor() {
     // 검사하는 부분
     super({
-      clientID: process.env.KAKAO_CLIENTID,
-      clientSecret: process.env.KAKAO_CLIENTSECRET,
+      clientID: process.env.KAKAO_CLIENT_ID,
+      clientSecret: process.env.KAKAO_CLIENT_SECRET,
       callbackURL: 'http://localhost:3000/login/kakao',
       scope: ['profile_nickname', 'account_email', 'age_range', 'birthday'],
     });
