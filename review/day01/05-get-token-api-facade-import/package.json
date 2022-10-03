@@ -1,0 +1,7 @@
+{
+  "type": "module",
+  "name": "05-get-token-api-facade-import",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT"
+}
