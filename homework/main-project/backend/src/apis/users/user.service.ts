@@ -33,6 +33,10 @@ export class UserService {
     return this.userRepository.findOne({ where: { email: userEmail } });
   }
 
+  findId({ userId }) {
+    return this.userRepository.findOne({ where: { id: userId } });
+  }
+
   findAll() {
     return this.userRepository.find();
   }

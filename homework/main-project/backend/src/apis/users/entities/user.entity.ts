@@ -15,6 +15,10 @@ export class User {
 
   @Column()
   @Field(() => String)
+  socialId: string;
+
+  @Column()
+  @Field(() => String)
   name: string;
 
   @Column()

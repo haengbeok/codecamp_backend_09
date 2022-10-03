@@ -16,4 +16,7 @@ export class CreateUserInput {
 
   @Field(() => String)
   personal: string;
+
+  // @Field(() => String)
+  // socialId: string;
 }

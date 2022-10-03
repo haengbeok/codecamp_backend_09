@@ -4,6 +4,7 @@
 
 type User {
   id: String!
+  socialId: String!
   name: String!
   phone: String!
   email: String!
