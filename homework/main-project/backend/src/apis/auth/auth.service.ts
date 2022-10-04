@@ -26,9 +26,30 @@ export class AuthService {
   }
 
   async socialLogin({ req, res }) {
+    if (req.user.email === undefined) {
+      // DB에 email 등록하는 로직 작성해라 까먹지말고 ㅇㅋ? 그거 하는중임
+      res.redirect('http://localhost:3000/login/kakao');
+
+      return;
+    }
+
     let user = await this.usersService.findOne({
       userEmail: req.user.email,
     });
+
+    // if (user) {
+    //   const newGuest: CreateUserInput = {
+    //     email: 'guest',
+    //     name: req.user.name,
+    //     password: req.user.password,
+    //     phone: req.user.phone,
+    //     personal: req.user.personal,
+    //   };
+    //   await this.usersService.create({
+    //     createUserInput: newGuest,
+    //     hashedPassword: req.user.password,
+    //   });
+    // }
 
     if (!user) {
       const newUser: CreateUserInput = {

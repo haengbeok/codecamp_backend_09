@@ -7,13 +7,15 @@ import { UserModule } from './apis/users/user.module';
 import { MovieModule } from './apis/movies/movies.module';
 import { MovieImageModule } from './apis/moviesImages/moviesImages.module';
 import { AuthModule } from './apis/auth/auth.module';
+import { MoviesUsersModule } from './apis/moviesUsers/moviesUsers.module';
 
 @Module({
   imports: [
     AuthModule,
-    UserModule,
     MovieModule,
     MovieImageModule,
+    MoviesUsersModule,
+    UserModule,
     ConfigModule.forRoot(),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,

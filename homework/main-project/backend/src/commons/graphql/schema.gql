@@ -4,12 +4,12 @@
 
 type User {
   id: String!
-  socialId: String!
   name: String!
   phone: String!
   email: String!
   personal: String!
   grade: String!
+  point: Int!
 }
 
 type Movie {
@@ -34,46 +34,45 @@ type MovieImage {
   movie: Movie!
 }
 
+type MovieUser {
+  id: String!
+  isPayment: MOVIE_USER_PAYMENT_STATUS_ENUM!
+  movie: Movie!
+  user: User!
+  impUid: String!
+  amount: Int!
+}
+
+enum MOVIE_USER_PAYMENT_STATUS_ENUM {
+  PAYMENT
+  CANCEL
+}
+
 type Query {
-  fetchLoginUser(userEmail: String!): User!
-  fetchUsers: [User!]!
-  fetchUser(userEmail: String!): User!
   fetchMovies: [Movie!]!
   fetchMovie(movieId: String!): Movie!
   fetchMovieImages: [MovieImage!]!
   fetchMovieImageWithDeleted: [MovieImage!]!
   fetchMovieImage(movieImageId: String!): MovieImage!
+  fetchLoginUser(userEmail: String!): User!
+  fetchUsers: [User!]!
+  fetchUser(userEmail: String!): User!
 }
 
 type Mutation {
   login(userEmail: String!, password: String!): String!
   restoreAccessToken: String!
-  createUser(createUserInput: CreateUserInput): User!
-  deleteLoginUser(userEmail: String!): Boolean!
-  updateUserPwd(userEmail: String!, updateUserInput: UpdateUserInput!): User!
-  updateUser(userEmail: String!, updateUserInput: UpdateUserInput!): User!
-  deleteUser(userEmail: String!): Boolean!
   createMovie(createMovieInput: CreateMovieInput): Movie!
   UpdateMovie(movieId: String!, updateMovieInput: UpdateMovieInput!): Movie!
   createMovieImage(createMovieImageInput: CreateMovieImageInput!): MovieImage!
   deleteMovieImage(movieImageId: String!): Boolean!
   restoreMovieImage(movieImageId: String!): Boolean!
-}
-
-input CreateUserInput {
-  name: String!
-  phone: String!
-  email: String!
-  password: String!
-  personal: String!
-}
-
-input UpdateUserInput {
-  name: String
-  phone: String
-  email: String
-  password: String
-  personal: String
+  createPayment(impUid: String!, amount: Int!): MovieUser!
+  createUser(createUserInput: CreateUserInput): User!
+  deleteLoginUser(userEmail: String!): Boolean!
+  updateUserPwd(userEmail: String!, updateUserInput: UpdateUserInput!): User!
+  updateUser(userEmail: String!, updateUserInput: UpdateUserInput!): User!
+  deleteUser(userEmail: String!): Boolean!
 }
 
 input CreateMovieInput {
@@ -94,4 +93,20 @@ input CreateMovieImageInput {
   url: String!
   isMain: Boolean!
   movieId: String!
+}
+
+input CreateUserInput {
+  name: String!
+  phone: String!
+  email: String!
+  password: String!
+  personal: String!
+}
+
+input UpdateUserInput {
+  name: String
+  phone: String
+  email: String
+  password: String
+  personal: String
 }

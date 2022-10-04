@@ -1,7 +1,6 @@
 import { Controller, Get, Req, Res, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { Request, Response } from 'express';
-import { CreateUserInput } from '../users/dto/createUser.input';
 import { User } from '../users/entities/user.entity';
 import { UserService } from '../users/user.service';
 import { AuthService } from './auth.service';
