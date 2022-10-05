@@ -68,6 +68,7 @@ type Mutation {
   deleteMovieImage(movieImageId: String!): Boolean!
   restoreMovieImage(movieImageId: String!): Boolean!
   createPayment(impUid: String!, amount: Int!): MovieUser!
+  cancelPayment(impUid: String!, amount: Int!): MovieUser!
   createUser(createUserInput: CreateUserInput): User!
   deleteLoginUser(userEmail: String!): Boolean!
   updateUserPwd(userEmail: String!, updateUserInput: UpdateUserInput!): User!

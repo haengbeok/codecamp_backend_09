@@ -1,6 +1,7 @@
-import { Controller, Get, Req, Res, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Req, Res, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { Request, Response } from 'express';
+import { IamportService } from '../iamport/iamport.service';
 import { User } from '../users/entities/user.entity';
 import { UserService } from '../users/user.service';
 import { AuthService } from './auth.service';
@@ -14,6 +15,7 @@ export class AuthController {
   constructor(
     private readonly usersService: UserService,
     private readonly authService: AuthService,
+    private readonly iamportService: IamportService,
   ) {}
 
   @Get('/login/google')

@@ -42,4 +42,8 @@ export class MoviesUsersService {
     // 4. 프론트에 넘겨주기
     return movieUser;
   }
+
+  findOne({ impUid }) {
+    return this.moviesUsersRepository.findOne({ where: { impUid } });
+  }
 }

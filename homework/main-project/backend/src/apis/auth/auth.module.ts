@@ -10,12 +10,15 @@ import { JwtGoogleStrategy } from 'src/commons/auth/jwt-social-google.strategy';
 import { AuthController } from './auth.controller';
 import { JwtNaverStrategy } from 'src/commons/auth/jwt-social-naver.strategy';
 import { JwtKakaoStrategy } from 'src/commons/auth/jwt-social-kakao.strategy';
+import { IamportService } from '../iamport/iamport.service';
+import { MovieUser } from '../moviesUsers/entities/movieUser.entity';
 
 @Module({
   imports: [
     JwtModule.register({}),
     TypeOrmModule.forFeature([
       User, //
+      MovieUser,
     ]),
   ],
   providers: [
@@ -23,6 +26,7 @@ import { JwtKakaoStrategy } from 'src/commons/auth/jwt-social-kakao.strategy';
     JwtGoogleStrategy,
     JwtNaverStrategy,
     JwtKakaoStrategy,
+    IamportService,
     AuthResolver, //
     AuthService,
     UserService,
