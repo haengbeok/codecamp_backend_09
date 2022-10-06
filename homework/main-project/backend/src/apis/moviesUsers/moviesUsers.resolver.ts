@@ -27,19 +27,13 @@ export class MoviesUsersResolver {
     @Args({ name: 'amount', type: () => Int }) amount: number,
     @Context() context: IContext,
   ) {
-    const result = await this.iamportService.paymentInfo({
-      imp_uid: impUid,
-      amount,
-    });
-    const findPayment = await this.moviesUsersService.findOne({ impUid });
-    // console.log(findPayment.impUid);
-    if (findPayment.impUid === impUid) {
-      throw new ConflictException('이미 추가되어있습니다.');
-    }
+    const token = await this.iamportService.getAccessToken();
+    await this.iamportService.paymentInfo({ impUid, amount, token });
+
+    await this.moviesUsersService.checkDuplicate({ impUid });
+
     const user = context.req.user;
-    if (result) {
-      return this.moviesUsersService.create({ impUid, amount, user });
-    }
+    return this.moviesUsersService.create({ impUid, amount, user });
   }
 
   @UseGuards(GqlAuthAccessGuard)
@@ -49,21 +43,20 @@ export class MoviesUsersResolver {
     @Args({ name: 'amount', type: () => Int }) amount: number,
     @Context() context: IContext,
   ) {
-    //
-    const findPayment = await this.moviesUsersService.findOne({ impUid });
-
     const user = context.req.user;
-    const result = await this.iamportService.cancelPayment({ impUid, amount });
-    if (result === null) {
-      throw new UnprocessableEntityException('이미 취소된 건입니다.');
-    } else {
-      if (findPayment.isPayment == MOVIE_USER_PAYMENT_STATUS_ENUM.CANCEL) {
-        throw new UnprocessableEntityException('이미 취소된 건입니다.');
-      } else if (
-        findPayment.isPayment === MOVIE_USER_PAYMENT_STATUS_ENUM.PAYMENT
-      ) {
-        return this.iamportService.cancel({ impUid, amount, user });
-      }
-    }
+    await this.moviesUsersService.checkCanceled({ impUid });
+
+    const token = await this.iamportService.getAccessToken();
+    const canceledAmount = await this.iamportService.cancelPayment({
+      impUid,
+      amount,
+      token,
+    });
+
+    return await this.moviesUsersService.cancel({
+      impUid,
+      amount: canceledAmount,
+      user,
+    });
   }
 }
