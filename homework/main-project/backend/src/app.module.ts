@@ -8,10 +8,12 @@ import { MovieModule } from './apis/movies/movies.module';
 import { MovieImageModule } from './apis/moviesImages/moviesImages.module';
 import { AuthModule } from './apis/auth/auth.module';
 import { MoviesUsersModule } from './apis/moviesUsers/moviesUsers.module';
+import { FilesModule } from './apis/files/files.module';
 
 @Module({
   imports: [
     AuthModule,
+    FilesModule,
     MovieModule,
     MovieImageModule,
     MoviesUsersModule,

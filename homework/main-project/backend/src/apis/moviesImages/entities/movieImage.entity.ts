@@ -19,7 +19,7 @@ export class MovieImage {
   @Field(() => String)
   url: string;
 
-  @Column()
+  @Column({ default: false })
   @Field(() => Boolean)
   isMain: boolean;
 

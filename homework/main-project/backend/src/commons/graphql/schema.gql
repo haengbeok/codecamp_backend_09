@@ -62,8 +62,9 @@ type Query {
 type Mutation {
   login(userEmail: String!, password: String!): String!
   restoreAccessToken: String!
+  uploadFile(files: [Upload!]!): [String!]!
   createMovie(createMovieInput: CreateMovieInput): Movie!
-  UpdateMovie(movieId: String!, updateMovieInput: UpdateMovieInput!): Movie!
+  updateMovie(movieId: String!, updateMovieInput: UpdateMovieInput!): Movie!
   createMovieImage(createMovieImageInput: CreateMovieImageInput!): MovieImage!
   deleteMovieImage(movieImageId: String!): Boolean!
   restoreMovieImage(movieImageId: String!): Boolean!
@@ -76,11 +77,15 @@ type Mutation {
   deleteUser(userEmail: String!): Boolean!
 }
 
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
 input CreateMovieInput {
   title: String!
   summary: String!
   open: String!
   movieGenres: [String!]!
+  movieURL: [String!]!
 }
 
 input UpdateMovieInput {
@@ -88,6 +93,7 @@ input UpdateMovieInput {
   summary: String
   open: String
   movieGenres: [String!]
+  movieURL: [String!]
 }
 
 input CreateMovieImageInput {

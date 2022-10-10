@@ -1,4 +1,6 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { FileUpload, GraphQLUpload } from 'graphql-upload';
+import { FilesService } from '../files/files.service';
 import { CreateMovieInput } from './dto/createMovie.input';
 import { UpdateMovieInput } from './dto/updateMovie.input';
 import { Movie } from './entities/movie.entity';
@@ -8,6 +10,8 @@ import { MovieService } from './movies.service';
 export class MovieResolver {
   constructor(
     private readonly movieService: MovieService, //
+
+    private readonly filesService: FilesService,
   ) {}
   @Query(() => [Movie])
   fetchMovies() {
@@ -31,10 +35,11 @@ export class MovieResolver {
   }
 
   @Mutation(() => Movie)
-  async UpdateMovie(
+  async updateMovie(
     @Args('movieId') movieId: string,
     @Args('updateMovieInput') updateMovieInput: UpdateMovieInput,
   ) {
+    await this.movieService.deleteImg({ movieId });
     return await this.movieService.update({ movieId, updateMovieInput });
   }
 }

@@ -33,7 +33,9 @@ export class Movie {
   isIng: boolean;
 
   @JoinTable()
-  @ManyToMany(() => MovieGenre, (movieGenres) => movieGenres.movie)
+  @ManyToMany(() => MovieGenre, (movieGenres) => movieGenres.movie, {
+    nullable: true,
+  })
   @Field(() => [MovieGenre])
   movieGenres: MovieGenre[];
 

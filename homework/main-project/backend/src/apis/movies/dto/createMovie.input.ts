@@ -13,4 +13,7 @@ export class CreateMovieInput {
 
   @Field(() => [String])
   movieGenres: string[];
+
+  @Field(() => [String])
+  movieURL: string[];
 }
