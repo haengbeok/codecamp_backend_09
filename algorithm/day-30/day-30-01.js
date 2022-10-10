@@ -49,9 +49,7 @@ function solution(n, arr1, arr2) {
     arr2[i] = Number(arr2[i].toString(2));
 
     newArr.push(String(arr1[i] + arr2[i]).padStart(n, "0"));
-  }
 
-  for (let i = 0; i < n; i++) {
     for (let j = 0; j < newArr[i].length; j++) {
       newArr[i][j] !== "0" ? (hash += "#") : (hash += " ");
     }
@@ -71,6 +69,7 @@ function solution(n, arr1, arr2) {
 
   for (let i = 0; i < arr1.length; i++) {
     answer[i] = "";
+
     //지도 1의 암호를 2진법으로 변환
     const map1 = arr1[i].toString(2).padStart(n, "0");
     //지도 2의 암호를 2진법으로 변환
