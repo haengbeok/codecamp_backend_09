@@ -10,7 +10,7 @@ export class FilesService {
     // 스토리지 셋팅하기
     const storage = new Storage({
       projectId: 'sunny-strategy-364005',
-      keyFilename: 'sunny-strategy-364005-16ae704912c5.json',
+      keyFilename: 'gcp-storage.json',
     }).bucket('haengbeok-storage');
 
     // 셋팅된 스토리지에 파일 올리기

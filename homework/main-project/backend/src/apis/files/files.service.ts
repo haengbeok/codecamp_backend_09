@@ -9,7 +9,7 @@ export class FilesService {
     const bucket = 'haengbeok-storage';
     const storage = new Storage({
       projectId: 'sunny-strategy-364005',
-      keyFilename: 'sunny-strategy-364005-16ae704912c5.json',
+      keyFilename: 'gcp-storage.json',
     }).bucket(bucket);
 
     const result = await Promise.all(

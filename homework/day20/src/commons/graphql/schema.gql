@@ -1,0 +1,47 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Movie {
+  id: String!
+  name: String!
+  summary: String!
+  isIng: Boolean!
+  open: String!
+}
+
+type MovieImage {
+  id: String!
+  url: String!
+  isMain: Boolean!
+  movie: Movie!
+}
+
+type Query {
+  fetchMovies: [Movie!]!
+  fetchMovie(movieId: String!): Movie!
+}
+
+type Mutation {
+  createMovie(createMovieInput: CreateMovieInput): Movie!
+  updateProduct(movieId: String!, updateMovieInput: UpdateMovieInput!): Movie!
+  createMovieImage(movieImageInput: MovieImageInput): MovieImage!
+}
+
+input CreateMovieInput {
+  name: String!
+  summary: String!
+  open: String!
+}
+
+input UpdateMovieInput {
+  name: String
+  summary: String
+  open: String
+}
+
+input MovieImageInput {
+  url: String!
+  isMain: Boolean!
+  movieId: String!
+}
