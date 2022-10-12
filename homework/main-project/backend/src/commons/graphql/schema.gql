@@ -61,6 +61,7 @@ type Query {
 
 type Mutation {
   login(userEmail: String!, password: String!): String!
+  logout: String!
   restoreAccessToken: String!
   uploadFile(files: [Upload!]!): [String!]!
   createMovie(createMovieInput: CreateMovieInput): Movie!
