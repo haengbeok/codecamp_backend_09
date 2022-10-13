@@ -1,8 +1,6 @@
 import { Injectable, UnprocessableEntityException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { url } from 'inspector';
 import { Repository } from 'typeorm';
-import { FilesService } from '../files/files.service';
 import { MovieGenre } from '../moviesGenres/entities/movieGenre.entity';
 import { MovieImage } from '../moviesImages/entities/movieImage.entity';
 import { Movie } from './entities/movie.entity';

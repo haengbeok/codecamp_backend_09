@@ -1,5 +1,4 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { FileUpload, GraphQLUpload } from 'graphql-upload';
 import { FilesService } from '../files/files.service';
 import { CreateMovieInput } from './dto/createMovie.input';
 import { UpdateMovieInput } from './dto/updateMovie.input';
