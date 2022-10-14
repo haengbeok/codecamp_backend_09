@@ -77,7 +77,7 @@ export class MovieService {
       relations: ['movieGenres', 'movieTheaters'],
     });
   }
-  async findAll() {
+  async findAll({ search }) {
     return this.movieRepository.find({
       relations: ['movieGenres', 'movieTheaters'],
     });
