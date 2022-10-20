@@ -1,5 +1,5 @@
 node_modules
-.env.*
+.env*
 .env.docker
 gcp-storage*.json
 .DS_Store
