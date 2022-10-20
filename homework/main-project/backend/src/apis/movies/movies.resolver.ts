@@ -26,7 +26,7 @@ export class MovieResolver {
     const searchCache = await this.cacheManager.get(search);
 
     // redis에 있으면 그 값 리턴
-    if (searchCache) return searchCache;
+    // if (searchCache) return [searchCache];
 
     // redis에 없으면 elastic에서 찾아보기
     const elaSearch = await this.elasticsearchService.search({
@@ -37,16 +37,20 @@ export class MovieResolver {
     });
 
     // elastic에서 검색해서 가져오기
-    console.log(elaSearch.hits.hits[0]._source);
-    const elaResult = elaSearch.hits.hits[0]._source;
 
-    // 가져온 값 redis에 저장
-    await this.cacheManager.set(search, elaResult, {
-      ttl: 60,
+    const searchMap = elaSearch.hits.hits.map(async (el) => {
+      return await this.cacheManager.set(search, el, { ttl: 60 });
     });
+    // const elaResult = elaSearch.hits.hits[0]._source;
+
+    console.log(searchMap);
+    // 가져온 값 redis에 저장
+    // await this.cacheManager.set(search, elaResult, {
+    //   ttl: 60,
+    // });
 
     // 가져온 값 리턴
-    return [elaResult];
+    return searchMap;
 
     // console.log(JSON.stringify(elaSearch, null, '  '));
     // return this.movieService.findAll({ search });
