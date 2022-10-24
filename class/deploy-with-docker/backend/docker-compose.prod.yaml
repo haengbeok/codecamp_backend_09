@@ -2,15 +2,17 @@ version: '3.7'
 
 services:
   my-backend:
+    image: asia.gcr.io/sunny-strategy-364005/my-backend:1.2
+    platform: linux/x86_64
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.prod
     # volumes:
     #   - ./src:/myfolder/src
-    ports:
-      - 3000:3000
-    env_file:
-      - ./.env.prod
+    # env_file:
+    #   - ./.env.prod
+    # ports:
+    #   - 3000:3000
 
   # my-database:
   #   platform: linux/x86_64
