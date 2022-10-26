@@ -11,19 +11,19 @@ export class BoardService {
     const result = [
       {
         number: 1,
-        writer: '철수',
+        writer: '철수(수정됨)',
         title: '제목입니다',
         contents: '내용이에요',
       },
       {
         number: 2,
-        writer: '영희',
+        writer: '영희(수정됨)',
         title: '영희입니다',
         contents: '영희에요',
       },
       {
         number: 3,
-        writer: '훈이',
+        writer: '훈이(수정됨)',
         title: '훈이입니다',
         contents: '훈이에요',
       },

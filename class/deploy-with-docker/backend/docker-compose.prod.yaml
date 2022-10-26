@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   my-backend:
-    image: asia.gcr.io/sunny-strategy-364005/my-backend:1.2
+    image: asia.gcr.io/sunny-strategy-364005/my-backend:1.9
     platform: linux/x86_64
     build:
       context: .
